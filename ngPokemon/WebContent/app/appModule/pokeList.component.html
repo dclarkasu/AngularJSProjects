@@ -1,0 +1,22 @@
+<h1>Hello Pokes</h1>
+
+<div ng-show="vm.errors.length > 0">
+	<ul>
+		<li ng-repeat=""></li>
+	</ul>
+</div>
+
+<form>
+	<input placeholder="Pokemon ID" ng-model="poke.pokeId"/>
+	<input placeholder="Pokemon Name" ng-model="poke.name"/>
+	<input placeholder="Pokemon Description" ng-model="poke.description"/>
+	<input placeholder="Image Source" ng-model="poke.img"/>
+	<input type="submit" value="Add" ng-click="vm.addPoke(poke); poke = {}"/>
+</form>
+
+<div id="pokeList" ng-repeat="poke in vm.pokemons">
+	<h4>{{poke.pokeId}}</h4>
+	<h4><img ng-src="{{poke.img}}"></h4>
+	<h4>{{poke.name}}</h4>
+	<h4>{{poke.description}}</h4>
+</div>

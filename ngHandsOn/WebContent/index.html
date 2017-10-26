@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head>
+  <title>Hands On</title>
+  <!-- Angular/3rd party first -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+ <!-- Modules -->
+  <script src="./app/appModule/app.module.js"></script>
+  <!-- Services -->
+  <script src="app/appModule/product.service.js"></script>
+  <!-- Components -->
+  <script src="./app/appModule/helloWorld/helloWorld.component.js"></script>
+  <script src="./app/appModule/productList/productList.component.js"></script>
+</head>
+<body>
+  <h1>Hello World</h1>
+  <h1>{{'Hello Angular'}}</h1>
+  	<hello-world>Loading...</hello-world><!-- good way to test and see if components are loading -->
+	<product-list>Product List loading?</product-list>
+</body>
+</html>

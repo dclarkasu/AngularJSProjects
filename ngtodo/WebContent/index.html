@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!-- bootstraps the module named "appModule" -->
+<html ng-app="appModule">
+<head>
+  <title>ToDo Lab</title>
+  <!-- AngularJS CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+  <!-- sources in the js file for the module creation -->
+  <script src="./app/appModule/app.module.js"></script>
+  <!-- source in service next -->
+  <script src="app/appModule/todo.service.js"></script>
+  <!-- sources in component file which has a template url for creating html partial -->
+  <script src="app/appModule/todoList/todoList.component.js"></script>
+</head>
+<body>
+	<!-- double brackets are "binding notation" What's inside MUST be JS -->
+ <!-- <h1>{{'Hello Angular'}}</h1>-->
+  	<todo-list></todo-list>
+</body>
+</html>

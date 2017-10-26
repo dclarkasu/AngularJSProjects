@@ -1,0 +1,39 @@
+<h2>Product List</h2>
+<!-- ng-repeat "first declares a local iterative var 'in' some list" -->
+	<!-- Could be presented inside any html element -->
+	<!-- Must be on the element you want repeated. Anything contained in that element
+	has access to the variables in the ng-repeat -->
+<div ng-repeat="item in vm.list">
+<ul>
+	<li >{{item.name}}</li>
+	<li>{{item.rating}}</li>
+	<li>{{item.price}}</li>
+	<li><img ng-src="{{item.imgUrl}}"></li>
+
+	<!-- Old School way -->
+	<!-- <li>{{vm.list[0]}}</li>
+	<li>{{vm.list[1]}}</li>
+	<li>{{vm.list[2]}}</li>
+	<li>{{vm.list[3]}}</li> -->
+</ul>
+</div>
+	<!-- Calling the behavior/function from the component -->
+	<h2>Number of Products: {{vm.getLengthOfList()}}</h2>
+	<!-- Assigning click behavior to this btn. Calls function from vm controller -->
+	<button ng-click="vm.clickLog('Howdy')">Click</button>
+	
+<form>
+<!-- ng-model stores the values entered in the form in an object
+which needs the same properties as the obj array it's being added to -->
+  <input type="text" placeholder="Name" ng-model="thing.name" /><br />
+  <input type="text" placeholder="Price" ng-model="thing.price"/><br />
+  <input type="text" placeholder="Image URL" ng-model="thing.imgUrl"/><br />
+  <input type="number" placeholder="rating" ng-model="thing.rating"/><br />
+ <!-- click behavior added to submit btn and calls function sending it
+ the obj it's been building. ; separates expression sets form's obj to {} to clear the form-->
+  <input type="submit" value="Add Item" ng-click="vm.addToList(thing); thing = {}" />
+</form>
+
+<input type="text" ng-model="item.name"/>
+<input type="checkbox" ng-model="item.inStock"/>
+<h1>{{item.name}} : {{item.inStock}}</h1>
