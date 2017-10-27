@@ -1,7 +1,7 @@
 // Component creation
 angular.module('appModule').component('todoList', {
 	templateUrl : "app/appModule/todoList/todoList.component.html",
-	controller : function(todoService) {
+	controller : function(todoService, $filter) {
 		//^^^todoService is "injected into controller"
 //Variables
 		//vm is shared scope between template and controller
@@ -12,6 +12,7 @@ angular.module('appModule').component('todoList', {
 
 		vm.todos = [];
 		
+		var incompleteFilter = $filter('incomplete')(vm.todos);
 		//Sets array values and later used to refresh value of todos array after functions
 		
 // Behaviors
@@ -39,7 +40,8 @@ angular.module('appModule').component('todoList', {
 		
 		
 		vm.todoCount = function() {
-			return vm.todos.length;
+//			return vm.todos.length;
+			return $filter('incomplete')(vm.todos).length;
 		}
 		
 		
@@ -75,6 +77,25 @@ angular.module('appModule').component('todoList', {
 				vm.reload();
 			})
 		}
+		
+		vm.checkTodoNum = function() {
+			if (vm.todoCount() > 10) {
+				return "redWarning";
+			}
+			if (vm.todoCount() > 5) {
+				return "yellowWarning";
+			}
+			if (vm.todoCount() < 5) {
+				return "greenWarning";
+			}
+		}
+		
+		vm.checkTaskCompletion = function(todo) {
+			if (todo.completed === true) {
+				return "strikeTask";
+			}
+		}
+		
 	},
 	controllerAs: 'vm'
 });

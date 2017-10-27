@@ -2,19 +2,31 @@
 <!-- bootstraps the module named "appModule" -->
 <html ng-app="appModule">
 <head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/app.css">
   <title>ToDo Lab</title>
   <!-- AngularJS CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
+  
+  <!-- <script src="angular-route.min.js"></script> -->
+  
   <!-- sources in the js file for the module creation -->
   <script src="./app/appModule/app.module.js"></script>
   <!-- source in service next -->
   <script src="app/appModule/todo.service.js"></script>
+  <!-- filter -->
+ <script src="app/appModule/incomplete.filter.js"></script>
   <!-- sources in component file which has a template url for creating html partial -->
   <script src="app/appModule/todoList/todoList.component.js"></script>
+  <script src="app/appModule/about/about.component.js"></script>
+  <script src="app/appModule/home/home.component.js"></script>
+  <script src="app/appModule/contact/contact.component.js"></script>
 </head>
 <body>
 	<!-- double brackets are "binding notation" What's inside MUST be JS -->
  <!-- <h1>{{'Hello Angular'}}</h1>-->
-  	<todo-list></todo-list>
+ <!-- ng-view is where the content is brought in and actually displayed at. THIS is the single page -->
+  	<ng-view></ng-view>
 </body>
 </html>

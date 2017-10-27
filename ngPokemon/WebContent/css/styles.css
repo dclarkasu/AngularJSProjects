@@ -1,0 +1,112 @@
+#pokeList {
+    width: 60%;
+   /*  height: 800px;
+  	overflow: auto; */
+    margin: auto;
+    padding: 2%;
+    background-color: rgba(170,170,170, .9); 
+
+}
+
+span:hover {
+	color: red;
+	cursor: pointer;
+}
+
+span {
+	color: yellow;
+}
+
+#newPokeForm {
+	width: 20%;
+	margin: left;
+	padding: 2%;
+}
+
+body {
+	background-image: url("http://gameranx.com/wp-content/uploads/2017/01/pokemon-go-revenue.jpg");
+}
+
+/* @import url('http://fonts.googleapis.com/css?family=Alegreya+Sans:300');
+body{
+    background: #000;
+} */
+
+
+/* .shimmer{
+    styling stuff
+    font-family:"Alegreya Sans";
+    font-weight:300;
+    font-size:1em;
+    margin:0 auto;
+    padding: 0 40px;
+    text-align: center;
+    color: rgba(255,255,255,0.1);
+}
+.shimmer {
+  the shimmer magic
+  background: -webkit-gradient(linear,left top,right top,from(#222),to(#222),color-stop(.5,#fff));
+  background: -moz-gradient(linear,left top,right top,from(#222),to(#222),color-stop(.5,#fff));
+  background: gradient(linear,left top,right top,from(#222),to(#222),color-stop(.5,#fff));
+  -webkit-background-size: 125px 100%;
+  -moz-background-size: 125px 100%;
+  background-size: 125px 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-animation-name: shimmer;
+  -moz-animation-name: shimmer;
+  -webkit-animation-name: shimmer;
+  animation-name: shimmer;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-color: #222;
+}
+@-moz-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+@-o-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+@-ms-keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: top left;
+  }
+  100% {
+    background-position: top right;
+  }
+} */

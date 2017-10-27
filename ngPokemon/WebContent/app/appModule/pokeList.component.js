@@ -35,6 +35,26 @@ angular.module('appModule').component('pokeList', {
 				////////
 			})
 		};
+		
+		vm.selectedType = 'all';
+		
+		vm.types = [
+			  'all',
+			  'normal',
+			  'poison',
+			  'water',
+			  'fighting',
+			  'fire',
+			  'bug',
+			  'flying',
+			  'electric',
+			  'ground',
+			  'rock',
+			  'psychic',
+			  'ghost',
+			  'dragon'
+			];
+
 	},
 	//Allows controller to be known as 'vm' outside of a local variable
 	controllerAs: 'vm'

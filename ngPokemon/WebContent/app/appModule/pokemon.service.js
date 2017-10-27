@@ -5,7 +5,7 @@ angular.module('appModule').factory('pokeService', function($http) {//$http must
 	service.index = function() {
 		return $http ({
 			method : 'GET',
-			url : BASE_URL + '?sorted=true'
+			url : BASE_URL
 		})
 	};
 	

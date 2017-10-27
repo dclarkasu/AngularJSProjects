@@ -1,0 +1,18 @@
+.redWarning {
+	background-color: red;
+	border-radius:10px;
+}
+
+.yellowWarning {
+	background-color: yellow;
+	border-radius:10px;
+}
+
+.greenWarning {
+	background-color: green;
+	border-radius:10px;
+}
+
+.strikeTask {
+	text-decoration: line-through;
+}

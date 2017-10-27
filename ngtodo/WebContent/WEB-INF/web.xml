@@ -7,10 +7,13 @@
   
   <servlet>
 		<servlet-name>todos</servlet-name>
+		<!-- Spring auto generates a Dispatcher servlet behind the scenes which takes all my paths created in the 
+		project and directs requests to the right method at the mapped destination -->
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>todos</servlet-name>
+		<!-- what you're root url pattern will be (after "projectName/") -->
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 	

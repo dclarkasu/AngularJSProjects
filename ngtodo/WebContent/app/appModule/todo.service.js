@@ -2,7 +2,7 @@
 //of the vars and functions called in the html
 //The service will be called on by the component when it requires data to display in the DOM
 
-angular.module('appModule').factory('todoService', function($http){
+angular.module('appModule').factory('todoService', function($http, $filter){
 	var service = {};
 	
 	
@@ -27,6 +27,12 @@ angular.module('appModule').factory('todoService', function($http){
 	};
 	
 	service.update = function(id, todo) {
+//		Sets completed Date property to current date/time before sending request to DB
+		if (todo.completed === true) {
+			todo.completeDate = $filter('date')(Date.now(), 'MM/dd/yyyy');
+		} else {
+			todo.completeDate = "";
+		}
 		return $http({
 		      method : 'PUT',
 		      url : 'rest/users/1/todos/' + id,
