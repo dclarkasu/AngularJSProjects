@@ -32,11 +32,15 @@ public class TodoDAOImpl implements TodoDAO {
 	@Override
 	public Todo show(int uid, int tid) {
 		String query = "SELECT t FROM Todo t WHERE t.user.id = :uid AND t.id = :tid";
-		Todo todo = em.createQuery(query, Todo.class)
+		List<Todo> todos = em.createQuery(query, Todo.class)
 				.setParameter("uid", uid)
 				.setParameter("tid", tid)
-				.getSingleResult();
-		return todo;
+				.getResultList();
+		
+		if (todos.size() < 1) {
+			return null;
+		}
+		return todos.get(0);
 	}
 
 	@Override

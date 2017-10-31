@@ -1,7 +1,7 @@
 // Component creation
 angular.module('appModule').component('todoList', {
 	templateUrl : "app/appModule/todoList/todoList.component.html",
-	controller : function(todoService, $filter) {
+	controller : function(todoService, $filter, $routeParams, $location) {
 		//^^^todoService is "injected into controller"
 //Variables
 		//vm is shared scope between template and controller
@@ -16,6 +16,21 @@ angular.module('appModule').component('todoList', {
 		//Sets array values and later used to refresh value of todos array after functions
 		
 // Behaviors
+		if (parseInt($routeParams.id)) {
+			todoService.show($routeParams.id)
+				.then(function(response){
+					console.log(response);
+					//If no response obj comes back
+					if(!response.data) {
+						$location.path('gotToOtherwise');
+					}
+					vm.selected = response.data;
+				})
+				//If there's a server error then it's caught and still goes to 404 ($location.path())
+				.catch(function(){
+					$location.path('servererrpor');
+				})
+			}
 		
 		vm.reload = function() {
 			todoService.index()
@@ -85,7 +100,7 @@ angular.module('appModule').component('todoList', {
 			if (vm.todoCount() > 5) {
 				return "yellowWarning";
 			}
-			if (vm.todoCount() < 5) {
+			if (vm.todoCount() <= 5) {
 				return "greenWarning";
 			}
 		}

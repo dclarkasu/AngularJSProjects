@@ -10,9 +10,12 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- Look here for files to build beans -->
-		<context:component-scan base-package="controllers"/>
+		<context:component-scan base-package="controllers, data"/>
+		
+		  <!-- bcrypt bean -->
+  		<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
-		<bean id="tododao" class="data.TodoDAOImpl"/>
+		<!-- <bean id="tododao" class="data.TodoDAOImpl"/> -->
 		
 		<bean id="myEntityManagerFactory"
 			class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -27,6 +30,14 @@
 		
 		<!-- The bean id above must match the tx manager below -->
 		<tx:annotation-driven transaction-manager="myTransactionManager" />
+		
+		<!-- Anything running on the mapping path will first go through the DataSecurityInterceptor -->
+		 <mvc:interceptors>
+    			<mvc:interceptor>
+      			<mvc:mapping path="/users/*/todos/**" />
+      			<bean id="DataSecurityInterceptor" class="security.DataSecurityInterceptor" />
+    			</mvc:interceptor>
+	  	</mvc:interceptors>
 		
 		<mvc:annotation-driven/>
 

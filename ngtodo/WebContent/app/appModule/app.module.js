@@ -1,5 +1,5 @@
 //Module creation and telling Angular to look for something called ngRoute. A dependency
-angular.module('appModule', ['ngRoute'])
+angular.module('appModule', ['ngRoute', 'ngCookies', 'authModule'])
 .config(function($routeProvider){
 	//Sets the routes for the url path after #/
 	//template 
@@ -24,10 +24,25 @@ angular.module('appModule', ['ngRoute'])
 			<todo-list></todo-list>
 			`
 		})
+		.when('/todos/:id', {
+			template : `
+				<todo-list></todo-list>
+				`
+		})
+		.when('/register', {
+			template : `
+				<register></register>
+			`
+		})
+		.when('/login', {
+			template : `
+				<login></login>
+			`
+		})
 		//If it isn't a route defined above go here:
 		.otherwise({
 			template : `
-				<h1>404 - NOT FOUND</h1>
+				<not-found></not-found>
 		`
 		})
 });

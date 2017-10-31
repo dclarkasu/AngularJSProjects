@@ -8,13 +8,18 @@
   <!-- AngularJS CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.min.js"></script>
-  
-  <!-- <script src="angular-route.min.js"></script> -->
+  <!-- Cookies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-cookies.min.js"></script>
   
   <!-- sources in the js file for the module creation -->
   <script src="./app/appModule/app.module.js"></script>
+  <script src="app/authModule/auth.module.js"></script>
+  <script src="app/authModule/login/login.component.js"></script>
+  <script src="app/authModule/register/register.component.js"></script>
+  <script src="app/authModule/logout/logout.component.js"></script>
   <!-- source in service next -->
   <script src="app/appModule/todo.service.js"></script>
+  <script src="app/authModule/auth.service.js"></script>
   <!-- filter -->
  <script src="app/appModule/incomplete.filter.js"></script>
   <!-- sources in component file which has a template url for creating html partial -->
@@ -22,8 +27,12 @@
   <script src="app/appModule/about/about.component.js"></script>
   <script src="app/appModule/home/home.component.js"></script>
   <script src="app/appModule/contact/contact.component.js"></script>
+  <script src="app/appModule/navBar/navBar.component.js"></script>
+  <script src="app/appModule/navBar/notFound.component.js"></script>
 </head>
 <body>
+<!-- nav-bar doesn't get emptied out like ng-view so it's always there -->
+	<nav-bar class="navbar"></nav-bar>
 	<!-- double brackets are "binding notation" What's inside MUST be JS -->
  <!-- <h1>{{'Hello Angular'}}</h1>-->
  <!-- ng-view is where the content is brought in and actually displayed at. THIS is the single page -->

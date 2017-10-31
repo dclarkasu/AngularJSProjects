@@ -2,14 +2,31 @@
 //of the vars and functions called in the html
 //The service will be called on by the component when it requires data to display in the DOM
 
-angular.module('appModule').factory('todoService', function($http, $filter){
+angular.module('appModule').factory('todoService', function($http, $filter, authService){
 	var service = {};
 	
 	
+	var checkLogin = function() {
+		if(authService.getToken().id) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	service.index = function() {
+		checkLogin();
 		return $http ({
 			method : 'GET',
-			url : 'rest/users/1/todos'
+//			url : 'rest/users/1/todos'
+			url : 'rest/users/'+ authService.getToken().id +'/todos'
+		});
+	}
+	
+	service.show = function(id) {
+		return $http ({
+			method : 'GET',
+			url : 'rest/users/'+ authService.getToken().id +'/todos/'+id
 		});
 	}
 	
@@ -18,7 +35,7 @@ angular.module('appModule').factory('todoService', function($http, $filter){
 		todo.description = '';
 		return $http ({
 			method : 'POST',
-			url : 'rest/users/1/todos',
+			url : 'rest/users/'+ authService.getToken().id +'/todos',
 			headers : {
 				'ContentType' : 'application/json'
 			},
@@ -35,7 +52,7 @@ angular.module('appModule').factory('todoService', function($http, $filter){
 		}
 		return $http({
 		      method : 'PUT',
-		      url : 'rest/users/1/todos/' + id,
+		      url : 'rest/users/'+ authService.getToken().id +'/todos/' + id,
 		      headers : {
 		        'Content-Type' : 'application/json'
 		      },
@@ -46,7 +63,7 @@ angular.module('appModule').factory('todoService', function($http, $filter){
 	service.destroy = function(id) {
 		return $http ({
 			method : 'DELETE',
-			url : 'rest/users/1/todos/' + id
+			url : 'rest/users/'+ authService.getToken().id +'/todos/' + id
 		})
 	};
 	//Must always return the object created first in the service
