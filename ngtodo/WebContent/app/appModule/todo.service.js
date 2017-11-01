@@ -2,7 +2,7 @@
 //of the vars and functions called in the html
 //The service will be called on by the component when it requires data to display in the DOM
 
-angular.module('appModule').factory('todoService', function($http, $filter, authService){
+angular.module('appModule').factory('todoService', function($http, $filter, authService, $rootScope, $location){
 	var service = {};
 	
 	
@@ -10,6 +10,7 @@ angular.module('appModule').factory('todoService', function($http, $filter, auth
 		if(authService.getToken().id) {
 			return true;
 		} else {
+			$location.path('/login');
 			return false;
 		}
 	}
@@ -41,6 +42,13 @@ angular.module('appModule').factory('todoService', function($http, $filter, auth
 			},
 			data : todo
 		})
+		.then(function(res){
+			$rootScope.$broadcast('createdTodo', {
+				message : "Todo Created",
+				todo : res.data
+			})
+			return res;
+		})
 	};
 	
 	service.update = function(id, todo) {
@@ -69,7 +77,7 @@ angular.module('appModule').factory('todoService', function($http, $filter, auth
 	//Must always return the object created first in the service
 	return service;
 })
-	
+	//Previous to DB when we just had an array of todos 
 //	service.destroy = function(id) {
 //		//todo in forEach is the value of what's at that index, the obj. idx is the index number
 //		todos.forEach(function(todo, idx) {

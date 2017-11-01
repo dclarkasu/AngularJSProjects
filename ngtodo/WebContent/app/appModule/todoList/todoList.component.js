@@ -1,7 +1,7 @@
 // Component creation
 angular.module('appModule').component('todoList', {
 	templateUrl : "app/appModule/todoList/todoList.component.html",
-	controller : function(todoService, $filter, $routeParams, $location) {
+	controller : function(todoService, $filter, $routeParams, $location, $scope) {
 		//^^^todoService is "injected into controller"
 //Variables
 		//vm is shared scope between template and controller
@@ -52,7 +52,14 @@ angular.module('appModule').component('todoList', {
 				vm.reload();
 			})
 		}
+		//Event Listener created for $broadcast
 		
+		//'createdTodo' is the name of the event being listened for, like ng-click
+		//ev represents the event actually happening, it's a new event OBJECT
+		$scope.$on('createdTodo', function(ev, data) {
+			console.log(ev);
+			console.log(data);
+		})
 		
 		vm.todoCount = function() {
 //			return vm.todos.length;

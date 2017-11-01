@@ -2,11 +2,13 @@ angular.module('authModule')
   .factory('authService', function($http, $cookies) {
     var service = {};
 
+    //It never matters what the values of the user are because we know their names. The cookie
+    //is concerned with storing their encrypted values
+    
     var saveToken = function(user) {
       // TODO : Store the user's id and email in cookies
 	    	$cookies.put('id', user.id);
     		$cookies.put('email', user.email);
-//    		$cookies.put('password', user.password);
     }
 
     service.getToken = function() {
@@ -17,7 +19,8 @@ angular.module('authModule')
     		user.email = $cookies.get('email');
     		return user;
     }
-
+    
+    //remove token service is private on purpose
     var removeToken = function() {
       // TODO : Remove both the id and email cookies
     		$cookies.remove('id');
@@ -53,12 +56,15 @@ angular.module('authModule')
     		})
     		.then(function(res) {
     			saveToken(res.data);
+    			return res;//passes along response to any future callbacks using this .then()
     		})
     }
 
     service.logout = function() {
       // TODO : Use the auth/logout route to remove the users session
       // On success, use removeToken to remove the id and email cookies
+    	
+    	//Logout does not have headers or a data object like other POST methods
     		return $http ({
     			method : 'POST',
     			url : 'rest/auth/logout'

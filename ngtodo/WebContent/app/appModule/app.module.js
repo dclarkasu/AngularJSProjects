@@ -1,4 +1,5 @@
 //Module creation and telling Angular to look for something called ngRoute. A dependency
+//In order to use authentication code it must bring in authModule
 angular.module('appModule', ['ngRoute', 'ngCookies', 'authModule'])
 .config(function($routeProvider){
 	//Sets the routes for the url path after #/
