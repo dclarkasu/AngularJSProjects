@@ -6,7 +6,7 @@ apply plugin: 'eclipse-wtp'
 name your project's dependency group and give it an initial version.
 the 'artifactId' is assigned automatically based on the project's name.
 */
-group = 'com.quiz'
+group = 'com.todo'
 version = '0.0.1-SNAPSHOT'
 
 /*
